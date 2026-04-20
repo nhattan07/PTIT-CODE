@@ -1,24 +1,24 @@
-//
-// Created by ntan07 on 6/4/2026.
-//
 #include <bits/stdc++.h>
 using namespace std;
-int main() {
-	int n; cin >> n;
-	vector<string> v;
-	string a[n];
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
-	for (int i = 0; i < n; i++) {
-		for (int x : a[i]) {
-			if (a[i][x] >= 'a' && a[i][x] <= 'z') continue;
-			while (a[i][x] >= '0' && a[i][x] <= '9') {
-				if (a[i][x + 1] >= '0' && a[i][x + 1] <= '9') {
-					a[i][x] = a[i][x] + a[i][x + 1];
-				}
 
+int main() {
+	int T;
+	cin >> T;
+	while (T--) {
+		string s;
+		cin >> s;
+		long long sum = 0;
+		long long num = 0;
+
+		for (char c : s) {
+			if (isdigit(c)) {
+				num = num * 10 + (c - '0');
+			} else {
+				sum += num;
+				num = 0;
 			}
 		}
+		sum += num;
+		cout << sum << '\n';
 	}
 }
